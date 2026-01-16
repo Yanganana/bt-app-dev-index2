@@ -63,16 +63,15 @@ html {
     outline-offset: 2px;
 }
 
-/* Validation Styles */
-.input-error {
-    border-color: #EF4444;
+/* Modal specific hover/active states */
+.wechat-modal-trigger:active {
+    transform: scale(0.95);
+    transition: transform 0.1s;
 }
+
 .input-error-message {
     color: #EF4444;
     font-size: 0.875rem;
     margin-top: 0.25rem;
     display: block;
-}
-.input-success {
-    border-color: #00CC99;
 }

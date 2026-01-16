@@ -27,9 +27,9 @@
   <!-- Navigation -->
   <header id="navbar" class="fixed w-full top-0 z-50 transition-smooth bg-white/95 backdrop-blur-sm border-b border-gray-100">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
+      <div class="flex items-center h-20">
         <!-- Logo -->
-        <div class="flex items-center flex-shrink-0">
+        <div class="flex-shrink-0">
           <a href="#" class="flex items-center group" aria-label="首页">
             <div class="w-10 h-10 rounded-lg bg-gradient-brand flex items-center justify-center shadow-lg group-hover:shadow-primary/30 transition-smooth">
               <i class="fa fa-code text-white text-xl"></i>
@@ -38,31 +38,19 @@
           </a>
         </div>
         
-        <!-- Desktop Navigation & Search -->
-        <div class="hidden md:flex flex-1 items-center justify-end space-x-8">
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex flex-1 items-center justify-center">
           <!-- Main Menu -->
-          <nav class="flex space-x-8" aria-label="Main Navigation">
+          <nav class="flex space-x-12" aria-label="Main Navigation">
             <a href="#services" class="text-dark-light hover:text-primary font-medium transition-colors py-2 border-b-2 border-transparent hover:border-primary">服务内容</a>
             <a href="#process" class="text-dark-light hover:text-primary font-medium transition-colors py-2 border-b-2 border-transparent hover:border-primary">开发流程</a>
             <a href="#about" class="text-dark-light hover:text-primary font-medium transition-colors py-2 border-b-2 border-transparent hover:border-primary">关于我们</a>
           </nav>
+        </div>
 
-          <!-- Search Bar -->
-          <div class="relative w-64 group">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <i class="fa fa-search text-gray-400 group-focus-within:text-primary transition-colors"></i>
-            </div>
-            <input type="text" id="search-input" 
-                   class="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-full leading-5 bg-gray-50 text-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all duration-300" 
-                   placeholder="搜索服务..." aria-label="搜索">
-            <!-- Search Results Dropdown -->
-            <div id="search-results" class="hidden absolute mt-2 w-full bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50 animate-fade-in">
-              <!-- Results injected by JS -->
-            </div>
-          </div>
-
-          <!-- CTA Button -->
-          <a href="#contact" class="px-6 py-2.5 bg-primary text-white font-semibold rounded-lg shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 transition-smooth flex items-center">
+        <!-- CTA Button -->
+        <div class="hidden md:flex">
+          <a href="#contact" class="px-6 py-2.5 bg-primary text-white font-semibold rounded-lg shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-smooth flex items-center">
             <span>获取报价</span>
             <i class="fa fa-arrow-right ml-2 text-sm"></i>
           </a>
@@ -80,14 +68,6 @@
     <!-- Mobile Navigation Menu -->
     <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-lg animate-fade-in">
       <div class="px-4 py-6 space-y-4">
-        <!-- Mobile Search -->
-        <div class="relative mb-6">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i class="fa fa-search text-gray-400"></i>
-            </div>
-            <input type="text" class="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-lg bg-gray-50 focus:outline-none focus:border-primary" placeholder="搜索...">
-        </div>
-        
         <nav class="flex flex-col space-y-4">
             <a href="#services" class="text-lg font-medium text-dark-light hover:text-primary pl-2 border-l-4 border-transparent hover:border-primary transition-colors">服务内容</a>
             <a href="#process" class="text-lg font-medium text-dark-light hover:text-primary pl-2 border-l-4 border-transparent hover:border-primary transition-colors">开发流程</a>
@@ -116,26 +96,27 @@
       </div>
 
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="max-w-4xl mx-auto text-center">
-          <span class="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-blue-100 text-primary text-sm font-semibold mb-8 shadow-sm animate-fade-in">
+        <div class="max-w-4xl text-left">
+          <span class="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-blue-100 text-primary text-sm font-semibold mb-2 shadow-sm animate-fade-in">
             <span class="w-2 h-2 rounded-full bg-secondary mr-2 animate-pulse"></span>
             AI驱动 + 低代码 + SaaS化
           </span>
-          
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-dark mb-6 leading-tight tracking-tight animate-slide-up" style="animation-delay: 0.1s;">
-            打造智能化<span class="text-gradient-brand">企业级应用</span>
-            <br class="hidden md:block">加速您的数字化转型
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-dark mb-4 leading-tight tracking-tight animate-slide-up" style="animation-delay: 0.1s;">
+            <span class="text-gradient-brand">AI+低代码平台</span>的应用解决方案
           </h1>
+          <h2 class="text-2xl md:text-3xl font-semibold text-dark-light mb-6 animate-slide-up" style="animation-delay: 0.15s;">
+            快速适配 + 快速交付 + 敏捷迭代
+          </h2>
           
-          <p class="text-lg md:text-xl text-dark-light mb-10 max-w-2xl mx-auto leading-relaxed animate-slide-up" style="animation-delay: 0.2s;">
-            我们专注于为中小企业提供高质量、高效率的软件开发服务。依托先进的AI辅助开发技术，将开发周期缩短50%，成本降低40%。
+          <p class="text-lg md:text-xl text-dark-light mb-10 max-w-3xl leading-relaxed animate-slide-up" style="animation-delay: 0.2s;">
+            我们专注于为小微企业提供高质量、低成本的定制SaaS软件应用开发、维护和实施部署服务，依托AI技术和低代码平台，助力企业快速实现信息化转型。
           </p>
           
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style="animation-delay: 0.3s;">
+          <div class="flex flex-col sm:flex-row items-center justify-start gap-4 animate-slide-up" style="animation-delay: 0.3s;">
             <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-1 transition-smooth flex justify-center items-center touch-target">
               免费咨询方案
             </a>
-            <a href="#services" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-50 text-dark font-bold rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-smooth flex justify-center items-center touch-target">
+            <a href="#services" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-50 text-dark font-bold rounded-lg border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-smooth flex justify-center items-center touch-target">
               了解服务详情
             </a>
           </div>
@@ -147,7 +128,7 @@
     <section id="services" class="py-24 bg-white">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">核心服务能力</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6">核心服务能力</h2>
           <p class="text-dark-light text-lg">全方位的技术支持，满足您不同阶段的业务需求</p>
         </div>
         
@@ -198,53 +179,173 @@
     </section>
 
     <!-- Process Section -->
-    <section id="process" class="py-24 bg-light relative">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row items-center gap-16">
-          <div class="md:w-1/2">
-            <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6">敏捷开发流程</h2>
-            <p class="text-dark-light text-lg mb-8">
-              我们采用标准化的敏捷开发模式，确保项目按时交付，质量可控。
+    <section id="process" class="py-24 bg-light relative overflow-hidden">
+      <!-- Background Decorative Elements -->
+      <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-50">
+        <div class="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-50 text-primary text-sm font-semibold mb-4">
+            <i class="fa fa-bolt mr-2"></i> 敏捷实践
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6">全链路敏捷开发流程</h2>
+          <p class="text-dark-light text-lg">
+            我们采用标准化的六步敏捷开发模式，结合低代码平台的强大性能，确保项目在高速交付的同时保持卓越的质量与可维护性。
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+          <!-- Connection Lines (Desktop only) -->
+          <div class="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 border-t-2 border-dashed border-gray-200 -translate-y-1/2 z-0"></div>
+
+          <!-- Step 1 -->
+          <div class="bg-white p-8 rounded-2xl shadow-lg shadow-gray-200/50 border border-gray-100 relative z-10 hover:-translate-y-2 transition-smooth group">
+            <div class="w-14 h-14 rounded-xl bg-blue-50 text-primary flex items-center justify-center font-bold text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors shadow-sm">
+              01
+            </div>
+            <h3 class="text-xl font-bold text-dark mb-3">需求调研与平台适配</h3>
+            <p class="text-dark-light text-sm leading-relaxed">
+              深度调研客户业务场景，结合低代码平台的核心能力，评估功能适配性并输出精准的敏捷开发路线图。
             </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="bg-white p-8 rounded-2xl shadow-lg shadow-gray-200/50 border border-gray-100 relative z-10 hover:-translate-y-2 transition-smooth group">
+            <div class="w-14 h-14 rounded-xl bg-teal-50 text-secondary flex items-center justify-center font-bold text-2xl mb-6 group-hover:bg-secondary group-hover:text-white transition-colors shadow-sm">
+              02
+            </div>
+            <h3 class="text-xl font-bold text-dark mb-3">应用设计与建模</h3>
+            <p class="text-dark-light text-sm leading-relaxed">
+              在平台上进行底层数据模型构建、业务对象关联及交互流程设计，为后续可视化开发奠定稳固架构。
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="bg-white p-8 rounded-2xl shadow-lg shadow-gray-200/50 border border-gray-100 relative z-10 hover:-translate-y-2 transition-smooth group">
+            <div class="w-14 h-14 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors shadow-sm">
+              03
+            </div>
+            <h3 class="text-xl font-bold text-dark mb-3">低代码可视化开发</h3>
+            <p class="text-dark-light text-sm leading-relaxed">
+              通过拖拽式组件与配置化逻辑，快速完成UI界面搭建与复杂业务场景实现，缩短传统编码周期80%。
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="bg-white p-8 rounded-2xl shadow-lg shadow-gray-200/50 border border-gray-100 relative z-10 hover:-translate-y-2 transition-smooth group">
+            <div class="w-14 h-14 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center font-bold text-2xl mb-6 group-hover:bg-orange-600 group-hover:text-white transition-colors shadow-sm">
+              04
+            </div>
+            <h3 class="text-xl font-bold text-dark mb-3">测试与调试</h3>
+            <p class="text-dark-light text-sm leading-relaxed">
+              执行严密的组件自测、流程端到端测试及用户体验(UX)评估，消除系统缺陷，确保应用极致流畅。
+            </p>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="bg-white p-8 rounded-2xl shadow-lg shadow-gray-200/50 border border-gray-100 relative z-10 hover:-translate-y-2 transition-smooth group">
+            <div class="w-14 h-14 rounded-xl bg-green-50 text-green-600 flex items-center justify-center font-bold text-2xl mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors shadow-sm">
+              05
+            </div>
+            <h3 class="text-xl font-bold text-dark mb-3">一键部署与上线</h3>
+            <p class="text-dark-light text-sm leading-relaxed">
+              应用开发事业部利用平台CD/CI能力实现一键分发生产环境，快速响应业务上线需求并提供入场培训。
+            </p>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="bg-white p-8 rounded-2xl shadow-lg shadow-gray-200/50 border border-gray-100 relative z-10 hover:-translate-y-2 transition-smooth group">
+            <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-2xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors shadow-sm">
+              06
+            </div>
+            <h3 class="text-xl font-bold text-dark mb-3">运维与迭代优化</h3>
+            <p class="text-dark-light text-sm leading-relaxed">
+              持续监控运行状态，根据用户反馈与业务增长，通过平台快速调整功能，实现应用的生命周期持续增值。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white overflow-hidden">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <!-- Company Intro -->
+          <div class="animate-fade-in">
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-50 text-primary text-sm font-semibold mb-6">
+              <i class="fa fa-building mr-2"></i> 关于我们
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark mb-8">关于黑塔软件</h2>
+            <div class="space-y-6 text-dark-light text-lg leading-relaxed">
+              <p class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-3 mr-3 flex-shrink-0"></span>
+                <span>黑塔软件技术有限公司成立于2021年，由一支源自国内知名软件企业、拥有二十余年企业级软件开发与低代码平台研发经验的核心团队创立。</span>
+              </p>
+              <p class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-3 mr-3 flex-shrink-0"></span>
+                <span>黑塔软件聚焦企业数字化转型需求，自主研发新一代低代码平台，并设立应用开发事业部，为小微企业客户提供"快速适配 + 快速交付 + 敏捷迭代"的定制化应用开发服务。</span>
+              </p>
+            </div>
             
-            <div class="space-y-8">
-              <div class="flex gap-4">
-                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">1</div>
-                <div>
-                  <h4 class="text-lg font-bold text-dark mb-2">需求分析与原型</h4>
-                  <p class="text-dark-light">深度沟通业务需求，输出交互原型，确认功能细节。</p>
-                </div>
+            <!-- Statistics or Highlight -->
+            <div class="mt-12 grid grid-cols-2 gap-8 border-t border-gray-100 pt-8">
+              <div>
+                <div class="text-3xl font-bold text-primary mb-1">20+</div>
+                <div class="text-sm text-dark-lighter">行业深耕经验</div>
               </div>
-              <div class="flex gap-4">
-                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center font-bold">2</div>
-                <div>
-                  <h4 class="text-lg font-bold text-dark mb-2">敏捷开发与测试</h4>
-                  <p class="text-dark-light">模块化开发，持续集成，每两周交付一个可用版本。</p>
-                </div>
-              </div>
-              <div class="flex gap-4">
-                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center font-bold">3</div>
-                <div>
-                  <h4 class="text-lg font-bold text-dark mb-2">部署与运维支持</h4>
-                  <p class="text-dark-light">自动化部署上云，提供7x24小时技术支持与维护。</p>
-                </div>
+              <div>
+                <div class="text-3xl font-bold text-secondary mb-1">2021</div>
+                <div class="text-sm text-dark-lighter">公司成立年份</div>
               </div>
             </div>
           </div>
-          <div class="md:w-1/2">
-            <!-- Abstract Graphic Placeholder -->
-            <div class="relative bg-white p-8 rounded-2xl shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
-              <div class="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-full blur-xl"></div>
-              <div class="space-y-4">
-                <div class="h-4 bg-gray-100 rounded w-3/4"></div>
-                <div class="h-4 bg-gray-100 rounded w-full"></div>
-                <div class="h-4 bg-gray-100 rounded w-5/6"></div>
-                <div class="grid grid-cols-2 gap-4 mt-6">
-                  <div class="h-24 bg-blue-50 rounded-lg"></div>
-                  <div class="h-24 bg-teal-50 rounded-lg"></div>
+
+          <!-- Business Positioning -->
+          <div class="bg-light p-8 md:p-12 rounded-3xl relative animate-fade-in" style="animation-delay: 0.2s;">
+            <div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-brand opacity-10 rounded-full blur-2xl"></div>
+            <h2 class="text-3xl font-bold text-dark mb-8">我们的业务</h2>
+            <ul class="space-y-6">
+              <li class="flex gap-4">
+                <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                  <i class="fa fa-bullseye text-primary text-xl"></i>
                 </div>
-              </div>
-            </div>
+                <div>
+                  <h4 class="font-bold text-dark mb-1">聚焦数字化转型</h4>
+                  <p class="text-dark-light text-sm">深度洞察企业痛点，提供精准的数字化升级路径。</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                  <i class="fa fa-layer-group text-secondary text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-dark mb-1">新一代低代码平台</h4>
+                  <p class="text-dark-light text-sm">自主研发核心引擎，大幅提升开发效率与系统稳定性。</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                  <i class="fa fa-users-gear text-orange-500 text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-dark mb-1">专业应用开发部</h4>
+                  <p class="text-dark-light text-sm">设立专项事业部，确保每一个定制需求都能高质量交付。</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                  <i class="fa fa-bolt text-yellow-500 text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-dark mb-1">高效交付承诺</h4>
+                  <p class="text-dark-light text-sm">为小微企业提供"快速适配 + 快速交付 + 敏捷迭代"的服务体验。</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -263,34 +364,31 @@
                 
                 <div class="space-y-6">
                   <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <i class="fa fa-phone"></i>
                     </div>
-                    <span>400-123-4567</span>
+                    <span>18420115949</span>
                   </div>
                   <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <i class="fa fa-envelope"></i>
                     </div>
-                    <span>contact@heita-dev.com</span>
+                    <span>chenpeihong@feixuns.com</span>
                   </div>
-                  <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                  <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <i class="fa fa-map-marker-alt"></i>
                     </div>
-                    <span>北京市朝阳区科技园A座</span>
+                    <span class="pt-2">惠州市惠州大道（东平段）108号海燕绿岛商城B1栋6层13号</span>
                   </div>
                 </div>
               </div>
               
               <div class="mt-12">
                 <div class="flex space-x-4">
-                  <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                  <button class="wechat-modal-trigger w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50" title="查看企业微信二维码">
                     <i class="fab fa-weixin"></i>
-                  </a>
-                  <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
-                    <i class="fab fa-github"></i>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -343,63 +441,80 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-dark text-white py-12 border-t border-gray-800">
+  <footer class="bg-dark text-white py-16 border-t border-gray-800">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-        <div class="col-span-1 md:col-span-1">
-          <div class="flex items-center mb-4">
-            <div class="w-8 h-8 rounded bg-gradient-brand flex items-center justify-center mr-2">
-              <i class="fa fa-code text-white text-sm"></i>
+      <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+        <div class="max-w-md">
+          <div class="flex items-center mb-6">
+            <div class="w-10 h-10 rounded-lg bg-gradient-brand flex items-center justify-center mr-3 shadow-lg shadow-primary/20">
+              <i class="fa fa-code text-white text-lg"></i>
             </div>
-            <span class="text-lg font-bold">黑塔应用开发</span>
+            <span class="text-2xl font-bold tracking-tight">黑塔应用开发</span>
           </div>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            致力于用技术驱动商业创新，为企业提供可信赖的数字化解决方案。
+          <p class="text-gray-400 text-base leading-relaxed mb-6">
+            我们专注于为小微企业提供高质量、低成本的定制SaaS软件应用开发、维护和实施部署服务，依托AI技术和低代码平台，助力企业快速实现信息化转型。
           </p>
-        </div>
-        
-        <div>
-          <h4 class="text-lg font-semibold mb-4">服务</h4>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="#" class="hover:text-white transition-colors">定制开发</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">移动端应用</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">企业级SaaS</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">AI集成</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="text-lg font-semibold mb-4">公司</h4>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="#" class="hover:text-white transition-colors">关于我们</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">加入我们</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">合作伙伴</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">隐私政策</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="text-lg font-semibold mb-4">订阅动态</h4>
-          <div class="flex gap-2">
-            <input type="email" placeholder="您的邮箱" class="bg-gray-800 border-none rounded px-3 py-2 text-sm text-white w-full focus:ring-1 focus:ring-primary">
-            <button class="bg-primary px-3 py-2 rounded text-white hover:bg-primary-light transition-colors">
-              <i class="fa fa-paper-plane"></i>
+          <div class="flex space-x-5">
+            <button class="wechat-modal-trigger w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all duration-300" title="查看企业微信二维码">
+              <i class="fab fa-weixin text-lg"></i>
             </button>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 md:gap-24">
+          <div>
+            <h4 class="text-lg font-bold mb-6 relative inline-block">
+              服务内容
+              <span class="absolute -bottom-2 left-0 w-8 h-1 bg-primary rounded-full"></span>
+            </h4>
+            <ul class="space-y-4 text-gray-400">
+              <li><a href="#services" class="hover:text-white transition-colors flex items-center"><i class="fa fa-chevron-right text-[10px] mr-2 text-primary/60"></i>定制开发</a></li>
+              <li><a href="#services" class="hover:text-white transition-colors flex items-center"><i class="fa fa-chevron-right text-[10px] mr-2 text-primary/60"></i>企业级SaaS</a></li>
+              <li><a href="#services" class="hover:text-white transition-colors flex items-center"><i class="fa fa-chevron-right text-[10px] mr-2 text-primary/60"></i>AI集成</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-lg font-bold mb-6 relative inline-block">
+              快速链接
+              <span class="absolute -bottom-2 left-0 w-8 h-1 bg-primary rounded-full"></span>
+            </h4>
+            <ul class="space-y-4 text-gray-400">
+              <li><a href="#process" class="hover:text-white transition-colors flex items-center"><i class="fa fa-chevron-right text-[10px] mr-2 text-primary/60"></i>开发流程</a></li>
+              <li><a href="#about" class="hover:text-white transition-colors flex items-center"><i class="fa fa-chevron-right text-[10px] mr-2 text-primary/60"></i>关于我们</a></li>
+              <li><a href="#contact" class="hover:text-white transition-colors flex items-center"><i class="fa fa-chevron-right text-[10px] mr-2 text-primary/60"></i>联系我们</a></li>
+            </ul>
           </div>
         </div>
       </div>
       
-      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-500 text-sm">© 2026 黑塔应用开发. All rights reserved.</p>
-        <div class="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fab fa-weixin"></i></a>
-          <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fab fa-weibo"></i></a>
-          <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fab fa-github"></i></a>
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2021 黑塔应用开发. All rights reserved.</p>
+        <div class="flex space-x-8 text-gray-500 text-sm">
+          <a href="#" class="hover:text-white transition-colors">隐私政策</a>
+          <a href="#" class="hover:text-white transition-colors">服务条款</a>
         </div>
       </div>
     </div>
   </footer>
   
+  <!-- WeChat Modal -->
+  <div id="wechat-modal" class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <!-- Modal Content -->
+    <div class="relative bg-white p-4 rounded-2xl shadow-2xl max-w-[90%] md:max-w-md transform scale-90 transition-transform duration-300">
+      <button id="close-modal" class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors text-3xl focus:outline-none" aria-label="关闭窗口">
+        <i class="fa fa-times"></i>
+      </button>
+      <div class="text-center p-4">
+        <img src="assets/wechat-qr.png" alt="企业微信二维码" class="w-full h-auto rounded-lg shadow-inner border border-gray-100">
+        <p class="mt-4 text-dark font-medium">扫描二维码，添加我的企业微信</p>
+        <p class="text-xs text-dark-lighter mt-1">飞讯软件 - chan peigen</p>
+      </div>
+    </div>
+  </div>
+
   <!-- JS Scripts -->
   <script src="js/main.js"></script>
 </body>

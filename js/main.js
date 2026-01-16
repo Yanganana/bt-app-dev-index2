@@ -1,150 +1,216 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Navigation Logic
-    const navbar = document.getElementById('navbar');
-    const mobileMenuBtn = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    // Toggle Mobile Menu
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            }
-        });
-    }
+/**
+ * BlackHole Software - Main JavaScript
+ * Handles Navigation, Search, Form Validation, and Modals
+ */
 
-    // Sticky Header Effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 10) {
-            navbar.classList.add('shadow-md', 'bg-white/95');
-        } else {
-            navbar.classList.remove('shadow-md', 'bg-white/95');
+(function() {
+    'use strict';
+
+    function init() {
+        // --- 1. Mobile Menu Logic ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuToggle && mobileMenu) {
+            const menuIcon = menuToggle.querySelector('i');
+            menuToggle.addEventListener('click', function() {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                if (menuIcon) {
+                    menuIcon.classList.toggle('fa-bars', isHidden);
+                    menuIcon.classList.toggle('fa-times', !isHidden);
+                }
+            });
+
+            // Close menu when clicking links
+            mobileMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    if (menuIcon) {
+                        menuIcon.classList.replace('fa-times', 'fa-bars');
+                    }
+                });
+            });
         }
-    });
 
-    // 2. Search Functionality (Mock)
-    const searchInput = document.getElementById('search-input');
-    const searchResults = document.getElementById('search-results');
-    
-    // Mock Data
-    const searchData = [
-        { title: '定制开发服务', link: '#services' },
-        { title: 'SaaS解决方案', link: '#services' },
-        { title: '开发流程', link: '#process' },
-        { title: '关于我们', link: '#about' },
-        { title: '联系方式', link: '#contact' },
-        { title: '获取报价', link: '#contact' }
-    ];
+        // --- 2. Navigation Scroll Effect ---
+        const header = document.querySelector('header');
+        if (header) {
+            window.addEventListener('scroll', function() {
+                const isScrolled = window.scrollY > 20;
+                header.classList.toggle('bg-white/95', !isScrolled);
+                header.classList.toggle('bg-white/90', isScrolled);
+                header.classList.toggle('backdrop-blur-md', isScrolled);
+                header.classList.toggle('shadow-sm', isScrolled);
+            }, { passive: true });
+        }
 
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            if (query.length < 1) {
-                searchResults.classList.add('hidden');
-                return;
-            }
-
-            const filtered = searchData.filter(item => item.title.toLowerCase().includes(query));
+        // --- 3. Form Validation & Submission ---
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            const inputs = contactForm.querySelectorAll('input[required], textarea[required]');
             
-            if (filtered.length > 0) {
-                searchResults.innerHTML = filtered.map(item => `
-                    <a href="${item.link}" class="block px-4 py-2 hover:bg-light transition-colors text-dark-light hover:text-primary">
-                        ${item.title}
-                    </a>
-                `).join('');
-                searchResults.classList.remove('hidden');
-            } else {
-                searchResults.innerHTML = '<div class="px-4 py-2 text-gray-500">无搜索结果</div>';
-                searchResults.classList.remove('hidden');
-            }
-        });
-
-        // Hide search results when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.classList.add('hidden');
-            }
-        });
-    }
-
-    // 3. Form Validation
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        const inputs = contactForm.querySelectorAll('input, textarea');
-        
-        // Real-time validation
-        inputs.forEach(input => {
-            input.addEventListener('blur', validateInput);
-            input.addEventListener('input', () => {
-                if (input.classList.contains('input-error')) {
-                    validateInput({ target: input });
-                }
-            });
-        });
-
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            let isValid = true;
-            inputs.forEach(input => {
-                if (!validateInput({ target: input })) {
-                    isValid = false;
-                }
+            inputs.forEach(function(input) {
+                input.addEventListener('blur', function() { validateInput(input); });
+                input.addEventListener('input', function() {
+                    if (input.classList.contains('border-red-500')) {
+                        validateInput(input);
+                    }
+                });
             });
 
-            if (isValid) {
-                // Mock submission
-                const btn = contactForm.querySelector('button[type="submit"]');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i>提交中...';
-                btn.disabled = true;
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                let isFormValid = true;
+                inputs.forEach(function(input) {
+                    if (!validateInput(input)) {
+                        isFormValid = false;
+                    }
+                });
 
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="fa fa-check mr-2"></i>提交成功';
-                    btn.classList.replace('bg-primary', 'bg-secondary');
-                    contactForm.reset();
-                    setTimeout(() => {
-                        btn.innerHTML = originalText;
-                        btn.disabled = false;
-                        btn.classList.replace('bg-secondary', 'bg-primary');
-                    }, 3000);
-                }, 1500);
-            }
-        });
+                if (isFormValid) {
+                    const btn = contactForm.querySelector('button[type="submit"]');
+                    const originalText = btn.innerHTML;
+                    
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i>正在提交...';
+                    btn.classList.add('opacity-80', 'cursor-not-allowed');
+
+                    const formData = {
+                        name: contactForm.name.value,
+                        phone: contactForm.phone.value,
+                        email: contactForm.email.value,
+                        message: contactForm.message.value
+                    };
+
+                    try {
+                        const response = await fetch('https://saas.btitib.com/api/basic-service/v1/kapi/app/c9c99e27bd0f092606ac85e402b95e8d/table/34b51eb1f0484a76b560b5b7f3b83859/clueCreate', { 
+                            method: 'POST', 
+                            headers: { 
+                                'Authorization': 'Bearer sk-fYUTKkxKa7xj0Ua9uYCdv72nL3AkkHR7', 
+                                'Content-Type': 'application/json; charset=utf-8',
+                                'Accept': 'application/json'
+                            }, 
+                            body: JSON.stringify(formData)
+                        });
+
+                        if (response.ok) {
+                            btn.innerHTML = '<i class="fa fa-check mr-2"></i>提交成功！';
+                            btn.classList.replace('bg-primary', 'bg-green-500');
+                            contactForm.reset();
+                        } else {
+                            throw new Error('提交失败');
+                        }
+                    } catch (error) {
+                        console.error('Submission error:', error);
+                        btn.innerHTML = '<i class="fa fa-exclamation-triangle mr-2"></i>提交失败，请稍后重试';
+                        btn.classList.replace('bg-primary', 'bg-red-500');
+                    } finally {
+                        setTimeout(function() {
+                            btn.disabled = false;
+                            btn.innerHTML = originalText;
+                            btn.classList.remove('opacity-80', 'cursor-not-allowed');
+                            btn.classList.remove('bg-green-500', 'bg-red-500');
+                            btn.classList.add('bg-primary');
+                        }, 3000);
+                    }
+                }
+            });
+        }
+
+        // --- 4. WeChat Modal Logic ---
+        const wechatModal = document.getElementById('wechat-modal');
+        const modalTriggers = document.querySelectorAll('.wechat-modal-trigger');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        if (wechatModal && modalTriggers.length > 0) {
+            // Use safer selectors that don't depend on Tailwind classes with slashes
+            const modalOverlay = wechatModal.querySelector('div:first-child');
+            const modalContent = wechatModal.querySelector('.relative');
+
+            const openModal = function() {
+                wechatModal.classList.remove('opacity-0', 'pointer-events-none');
+                wechatModal.classList.add('opacity-100', 'pointer-events-auto');
+                if (modalContent) {
+                    modalContent.classList.remove('scale-90');
+                    modalContent.classList.add('scale-100');
+                }
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeModal = function() {
+                wechatModal.classList.add('opacity-0', 'pointer-events-none');
+                wechatModal.classList.remove('opacity-100', 'pointer-events-auto');
+                if (modalContent) {
+                    modalContent.classList.add('scale-90');
+                    modalContent.classList.remove('scale-100');
+                }
+                document.body.style.overflow = '';
+            };
+
+            modalTriggers.forEach(function(trigger) {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('WeChat trigger clicked');
+                    openModal();
+                });
+            });
+
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+            if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && wechatModal.classList.contains('opacity-100')) {
+                    closeModal();
+                }
+            });
+        }
     }
 
-    function validateInput(e) {
-        const input = e.target;
-        const errorSpan = input.parentElement.querySelector('.input-error-message');
+    function validateInput(input) {
         let valid = true;
         let message = '';
+        const parent = input.parentElement;
+        if (!parent) return true;
+        
+        const errorSpan = parent.querySelector('.input-error-message');
 
         if (input.required && !input.value.trim()) {
             valid = false;
             message = '此项为必填项';
-        } else if (input.type === 'email' && !/\S+@\S+\.\S+/.test(input.value)) {
-            valid = false;
-            message = '请输入有效的邮箱地址';
-        } else if (input.type === 'tel' && !/^\d{11}$/.test(input.value)) {
-            // Simple 11-digit phone check for CN
-            valid = false;
-            message = '请输入有效的手机号码';
+        } else if (input.type === 'email' && input.value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(input.value)) {
+                valid = false;
+                message = '请输入有效的邮箱地址';
+            }
+        } else if (input.id === 'phone' && input.value) {
+            const phoneRegex = /^1[3-9]\d{9}$/;
+            if (!phoneRegex.test(input.value)) {
+                valid = false;
+                message = '请输入有效的手机号码';
+            }
         }
 
         if (!valid) {
-            input.classList.add('input-error', 'border-red-500');
-            input.classList.remove('border-gray-300');
-            if (errorSpan) errorSpan.textContent = message;
+            input.classList.add('border-red-500', 'ring-red-500/10');
+            input.classList.remove('border-gray-200');
         } else {
-            input.classList.remove('input-error', 'border-red-500');
-            input.classList.add('input-success', 'border-green-500'); // Optional: Green border for success
-            if (errorSpan) errorSpan.textContent = '';
+            input.classList.remove('border-red-500', 'ring-red-500/10');
+            input.classList.add('border-gray-200');
         }
+
+        if (errorSpan) {
+            errorSpan.textContent = message;
+            errorSpan.style.display = message ? 'block' : 'none';
+        }
+
         return valid;
     }
-});
+
+    // Initialize
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        init();
+    } else {
+        document.addEventListener('DOMContentLoaded', init);
+    }
+})();
